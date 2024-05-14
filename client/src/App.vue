@@ -1,9 +1,17 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import { ref, onMounted } from "vue";
+import { getAllCustomers } from "./services";
+import Home from "./views/Home.vue";
+
+const customers = ref([]);
+
+onMounted(async () => {
+  customers.value = await getAllCustomers();
+});
 </script>
 
 <template>
-  <div></div>
+  <Home :customers="customers"></Home>
 </template>
 
 <style></style>
