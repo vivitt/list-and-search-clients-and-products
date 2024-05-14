@@ -1,17 +1,23 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { getAllCustomers } from "./services";
+import { getAllCustomers, getClientProducts } from "./services";
 import Home from "./views/Home.vue";
-
-const customers = ref([]);
+import Customer from "./views/Customer.vue";
+const customerData = ref([]);
+const customer = ref({});
+const productData = ref([]);
 
 onMounted(async () => {
-  customers.value = await getAllCustomers();
+  const id = 555555;
+  customerData.value = await getAllCustomers();
+  customer.value = customerData.value.filter((el) => el.id === id);
+  productData.value = await getClientProducts(customer.value.id);
 });
 </script>
 
 <template>
-  <Home :customers="customers"></Home>
+  <Home :customers="customerData"></Home>
+  <Customer :customer="customer" :products="productData"></Customer>
 </template>
 
 <style></style>
