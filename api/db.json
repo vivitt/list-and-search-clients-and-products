@@ -2,6 +2,7 @@
   "customers": [
     {
       "_id": 555555,
+      "id": 555555,
       "docType": "nif",
       "docNum": "11223344E",
       "email": "it@parlem.com",
@@ -12,6 +13,7 @@
     },
     {
       "_id": 555556,
+      "id": 555556,
       "docType": "nif",
       "docNum": "11223345E",
       "email": "hello@parlem.com",
