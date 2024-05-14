@@ -13,6 +13,8 @@ onMounted(async () => {
   customer.value = customerData.value.filter((el) => el.id === id);
   productData.value = await getClientProducts(customer.value.id);
 });
+
+console.log(customer.value);
 </script>
 
 <template>

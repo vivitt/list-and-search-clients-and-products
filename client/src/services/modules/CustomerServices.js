@@ -5,7 +5,8 @@ import { makeRequest } from "../fetch/makeRequest.js";
  */
 export const getAllCustomers = async () => {
   const jsonResponse = await makeRequest(
-    new Request(`http://localhost:3000/customers`, {
+    new Request(`http://localhost:3000/api/customers/`, {
+      mode: "cors",
       headers: new Headers({ "Content-Type": "application/json" }),
     })
   );
@@ -18,7 +19,7 @@ export const getAllCustomers = async () => {
  */
 export const getSingleCustomer = async (clientId) => {
   const jsonResponse = await makeRequest(
-    new Request(`http://localhost:3000/customers/clientId`, {
+    new Request(`http://localhost:3000/api/customers/clientId`, {
       headers: new Headers({ "Content-Type": "application/json" }),
     })
   );
