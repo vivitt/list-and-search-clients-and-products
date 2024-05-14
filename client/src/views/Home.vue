@@ -22,7 +22,7 @@ const props = defineProps(["customers"]);
       <td>{{ customer.email }}</td>
       <td>{{ customer.phone }}</td>
       <td>{{ customer.docType }}: {{ customer.docNum }}</td>
-      <td><button>Veure productes contractats</button></td>
+      <td><a :href="`/:${customer.id}`">Veure productes contractats</a></td>
     </tr>
   </table>
 </template>
