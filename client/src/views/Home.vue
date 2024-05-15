@@ -2,12 +2,21 @@
 import { ref, onMounted } from "vue";
 import { getAllCustomers } from "../services";
 import { RouterLink } from "vue-router";
+import OrderButton from "../components/OrderButton.vue";
 
 const customerData = ref([]);
+const filteredCustomers = ref(customerData.value);
 
 onMounted(async () => {
   customerData.value = await getAllCustomers();
+  filteredCustomers.value = customerData.value;
 });
+
+const sortByProperty = () => {
+  filteredCustomers.value.sort((a, b) => {
+    return -1;
+  });
+};
 </script>
 
 <template>
@@ -15,15 +24,24 @@ onMounted(async () => {
     <h1>Llistat dels clients</h1>
     <table>
       <tr>
-        <th>Client ID</th>
-        <th>Nom</th>
-        <th>Cognom(s)</th>
+        <th>
+          Client ID
+          <OrderButton @order="sortByProperty()"></OrderButton>
+        </th>
+        <th>
+          Nom
+          <OrderButton @order="sortByProperty()"></OrderButton>
+        </th>
+        <th>
+          Cognom(s)
+          <OrderButton @order="sortByProperty()"></OrderButton>
+        </th>
         <th>Correu electrònic</th>
         <th>Telèfon</th>
         <th>Identificació</th>
         <th>Més informació</th>
       </tr>
-      <tr v-for="customer in customerData">
+      <tr v-for="customer in filteredCustomers">
         <td>{{ customer.customerId }}</td>
         <td>{{ customer.givenName }}</td>
         <td>{{ customer.familyName1 }}</td>
