@@ -1,9 +1,9 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { getAllCustomers } from "../services";
 import { RouterLink } from "vue-router";
 import OrderButton from "../components/OrderButton.vue";
-
+import CustomerFilter from "../components/CustomerFilter.vue";
 const orderCustomers = {
   ascending: 1,
   descending: -1,
@@ -13,6 +13,8 @@ const orderAscending = ref(true);
 
 const customerData = ref([]);
 const filteredCustomers = ref(customerData.value);
+
+const filterQuery = ref("");
 
 onMounted(async () => {
   customerData.value = await getAllCustomers();
@@ -25,19 +27,43 @@ const sortByProperty = (value, property) => {
     const propertyB = b[property];
 
     console.log(propertyA);
-    if (propertyA < propertyB) {
-      return orderCustomers[value];
-    }
-    if (propertyA > propertyB) {
-      return -1;
+    if (value.ascending) {
+      if (propertyA > propertyB) {
+        return value.ascending;
+      } else {
+        return value.descending;
+      }
+    } else {
+      if (propertyA > propertyB) {
+        return value.descending;
+      } else {
+        return value.ascending;
+      }
     }
   });
 };
+
+const filterCustomers = () => {
+  filteredCustomers.value = customerData.value.filter((customer) => {
+    return customer.givenName
+      .toLowerCase()
+      .includes(filterQuery.value.trim().toLowerCase());
+  });
+};
+
+watch(filterQuery, () => {
+  filterCustomers();
+});
 </script>
 
 <template>
   <section>
     <h1>Llistat dels clients</h1>
+    <CustomerFilter
+      v-model:query.capitalize="filterQuery"
+      @clear="filterQuery = ''"
+    ></CustomerFilter>
+
     <table>
       <tr>
         <th>
@@ -69,7 +95,7 @@ const sortByProperty = (value, property) => {
       <tr v-for="customer in filteredCustomers">
         <td>{{ customer.customerId }}</td>
         <td>{{ customer.givenName }}</td>
-        <td>{{ customer.familyName1 }}</td>
+        <td>{{ customer.familyName }}</td>
         <td>{{ customer.email }}</td>
         <td>{{ customer.phone }}</td>
         <td>{{ customer.docType?.toUpperCase() }} {{ customer.docNum }}</td>
