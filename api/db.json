@@ -7,7 +7,7 @@
       "email": "it@parlem.com",
       "customerId": "11111",
       "givenName": "Enriqueta",
-      "familyName1": "Parlem",
+      "familyName": "Parlem",
       "phone": "668668668"
     },
     {
@@ -37,7 +37,7 @@
       "email": "maxwell@hotmail.com",
       "customerId": "11114",
       "givenName": "Lucas",
-      "familyName1": "Maxwell",
+      "familyName": "Maxwell",
       "phone": "699876543"
     },
     {
@@ -47,7 +47,7 @@
       "email": "leila@yahoo.com",
       "customerId": "11115",
       "givenName": "Isabella",
-      "familyName1": "Leila",
+      "familyName": "Leila",
       "phone": "667788990"
     },
     {
@@ -57,7 +57,7 @@
       "email": "adrian@outlook.com",
       "customerId": "11116",
       "givenName": "Luis",
-      "familyName1": "Adrian",
+      "familyName": "Adrian",
       "phone": "654321987"
     },
     {
@@ -67,7 +67,7 @@
       "email": "julia@gmail.com",
       "customerId": "11117",
       "givenName": "Elena",
-      "familyName1": "Julia",
+      "familyName": "Julia",
       "phone": "688888888"
     }
   ],

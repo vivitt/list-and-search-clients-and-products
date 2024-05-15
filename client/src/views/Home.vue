@@ -4,6 +4,13 @@ import { getAllCustomers } from "../services";
 import { RouterLink } from "vue-router";
 import OrderButton from "../components/OrderButton.vue";
 
+const orderCustomers = {
+  ascending: 1,
+  descending: -1,
+};
+
+const orderAscending = ref(true);
+
 const customerData = ref([]);
 const filteredCustomers = ref(customerData.value);
 
@@ -12,9 +19,18 @@ onMounted(async () => {
   filteredCustomers.value = customerData.value;
 });
 
-const sortByProperty = () => {
+const sortByProperty = (value, property) => {
   filteredCustomers.value.sort((a, b) => {
-    return -1;
+    const propertyA = a[property];
+    const propertyB = b[property];
+
+    console.log(propertyA);
+    if (propertyA < propertyB) {
+      return orderCustomers[value];
+    }
+    if (propertyA > propertyB) {
+      return -1;
+    }
   });
 };
 </script>
@@ -26,15 +42,24 @@ const sortByProperty = () => {
       <tr>
         <th>
           Client ID
-          <OrderButton @order="sortByProperty()"></OrderButton>
+          <OrderButton
+            @order="sortByProperty"
+            orderByProperty="customerId"
+          ></OrderButton>
         </th>
         <th>
           Nom
-          <OrderButton @order="sortByProperty()"></OrderButton>
+          <OrderButton
+            @order="sortByProperty"
+            orderByProperty="givenName"
+          ></OrderButton>
         </th>
         <th>
           Cognom(s)
-          <OrderButton @order="sortByProperty()"></OrderButton>
+          <OrderButton
+            @order="sortByProperty"
+            orderByProperty="familyName"
+          ></OrderButton>
         </th>
         <th>Correu electrònic</th>
         <th>Telèfon</th>

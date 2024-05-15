@@ -1,16 +1,18 @@
 <script setup>
 import { ref } from "vue";
 
-const props = defineProps({
-  property: String,
-});
-
+const props = defineProps(["orderByProperty"]);
 const orderAscending = ref(true);
+
 const emit = defineEmits(["order"]);
 
 const clickHandler = () => {
-  emit("order");
   orderAscending.value = !orderAscending.value;
+  emit(
+    "order",
+    orderAscending.value ? "ascending" : "descending",
+    props.orderByProperty
+  );
 };
 </script>
 
