@@ -14,7 +14,9 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(
   jsonServer.rewriter({
-    "/api/*": "/$1",
+    "/api/customers": "/customers",
+    "/api/customers/?customerId=id": "/customers/:id",
+    "/api/products/?customerId=id": "/products/:id",
   })
 );
 server.use(router);

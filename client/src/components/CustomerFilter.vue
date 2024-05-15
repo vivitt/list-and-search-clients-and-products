@@ -6,7 +6,10 @@ const emit = defineEmits(["clear"]);
 
 <template>
   <div class="customer-filter">
-    <label for="filter"> Comença a escriure per filtrar clients </label>
+    <label for="filter"
+      >Filtra clients per ID, nom, cognom, telèfon, email, o número de
+      document</label
+    >
     <div>
       <input type="text" v-model="query" id="filter" />
       <button @click="$emit('clear')" aria-label="clear input">❎</button>
