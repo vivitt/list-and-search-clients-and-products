@@ -6,9 +6,12 @@ import { makeRequest } from "../fetch/makeRequest.js";
  */
 export const getClientProducts = async (clientId) => {
   const jsonResponse = await makeRequest(
-    new Request(`http://localhost:3000/products/?customerId=${clientId}`, {
-      headers: new Headers({ "Content-Type": "application/json" }),
-    })
+    new Request(
+      `https://prova-tecnica-parlem.vercel.app/products/?customerId=${clientId}`,
+      {
+        headers: new Headers({ "Content-Type": "application/json" }),
+      }
+    )
   );
   return jsonResponse;
 };

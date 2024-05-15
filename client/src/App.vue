@@ -10,7 +10,7 @@ const productData = ref([]);
 onMounted(async () => {
   const id = 555555;
   customerData.value = await getAllCustomers();
-  customer.value = customerData.value.filter((el) => el.id === id);
+  customer.value = customerData.value.filter((el) => el.id === id)[0];
   productData.value = await getClientProducts(customer.value.id);
 });
 

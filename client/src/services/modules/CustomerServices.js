@@ -5,7 +5,7 @@ import { makeRequest } from "../fetch/makeRequest.js";
  */
 export const getAllCustomers = async () => {
   const jsonResponse = await makeRequest(
-    new Request(`http://localhost:3000/api/customers/`, {
+    new Request(`https://prova-tecnica-parlem.vercel.app/customers/`, {
       mode: "cors",
       headers: new Headers({ "Content-Type": "application/json" }),
     })
@@ -19,7 +19,7 @@ export const getAllCustomers = async () => {
  */
 export const getSingleCustomer = async (clientId) => {
   const jsonResponse = await makeRequest(
-    new Request(`http://localhost:3000/api/customers/clientId`, {
+    new Request(`https://prova-tecnica-parlem.vercel.app/customers/clientId`, {
       headers: new Headers({ "Content-Type": "application/json" }),
     })
   );
