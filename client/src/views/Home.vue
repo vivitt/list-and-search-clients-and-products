@@ -1,6 +1,13 @@
 <script setup>
-import { ref } from "vue";
-const props = defineProps(["customers"]);
+import { ref, onMounted } from "vue";
+import { getAllCustomers } from "../services";
+import { RouterLink } from "vue-router";
+
+const customerData = ref([]);
+
+onMounted(async () => {
+  customerData.value = await getAllCustomers();
+});
 </script>
 
 <template>
@@ -15,14 +22,18 @@ const props = defineProps(["customers"]);
       <th>Document</th>
       <th>Mes informacio</th>
     </tr>
-    <tr v-for="customer in customers">
+    <tr v-for="customer in customerData">
       <td>{{ customer.id }}</td>
       <td>{{ customer.givenName }}</td>
       <td>{{ customer.familyName1 }}</td>
       <td>{{ customer.email }}</td>
       <td>{{ customer.phone }}</td>
       <td>{{ customer.docType }}: {{ customer.docNum }}</td>
-      <td><a :href="`/:${customer.id}`">Veure productes contractats</a></td>
+      <td>
+        <RouterLink :to="`/customer/${customer.id}`"
+          >Veure productes contractats</RouterLink
+        >
+      </td>
     </tr>
   </table>
 </template>

@@ -19,9 +19,12 @@ export const getAllCustomers = async () => {
  */
 export const getSingleCustomer = async (clientId) => {
   const jsonResponse = await makeRequest(
-    new Request(`https://prova-tecnica-parlem.vercel.app/customers/clientId`, {
-      headers: new Headers({ "Content-Type": "application/json" }),
-    })
+    new Request(
+      `https://prova-tecnica-parlem.vercel.app/customers/${clientId}/`,
+      {
+        headers: new Headers({ "Content-Type": "application/json" }),
+      }
+    )
   );
   return jsonResponse;
 };
