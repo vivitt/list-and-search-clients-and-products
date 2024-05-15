@@ -4,6 +4,7 @@ import { getAllCustomers } from "../services";
 import { RouterLink } from "vue-router";
 import OrderButton from "../components/OrderButton.vue";
 import CustomerFilter from "../components/CustomerFilter.vue";
+
 const orderCustomers = {
   ascending: 1,
   descending: -1,
@@ -45,7 +46,13 @@ const sortByProperty = (value, property) => {
 
 const filterCustomers = () => {
   filteredCustomers.value = customerData.value.filter((customer) => {
-    return customer.givenName
+    let customerString =
+      customer.givenName +
+      customer.familyName +
+      customer.customerId +
+      customer.docNum +
+      customer.phone;
+    return customerString
       .toLowerCase()
       .includes(filterQuery.value.trim().toLowerCase());
   });
