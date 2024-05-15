@@ -2,7 +2,6 @@
   "customers": [
     {
       "_id": 555555,
-      "id": 555555,
       "docType": "nif",
       "docNum": "11223344E",
       "email": "it@parlem.com",
@@ -13,14 +12,63 @@
     },
     {
       "_id": 555556,
-      "id": 555556,
       "docType": "nif",
       "docNum": "11223345E",
       "email": "hello@parlem.com",
       "customerId": "11112",
-      "givenName": "Maria",
-      "familyName1": "Par",
+      "givenName": "Niklaus",
+      "familyName": " Brady",
       "phone": "668668777"
+    },
+    {
+      "_id": 555557,
+      "docType": "nif",
+      "docNum": "56765356E",
+      "email": "vulputate.risus.a@hotmail.net",
+      "customerId": "11113",
+      "givenName": "Kay ",
+      "familyName": "Gomez",
+      "phone": "668666878"
+    },
+    {
+      "_id": 555558,
+      "docType": "nif",
+      "docNum": "55667799G",
+      "email": "maxwell@hotmail.com",
+      "customerId": "11114",
+      "givenName": "Lucas",
+      "familyName1": "Maxwell",
+      "phone": "699876543"
+    },
+    {
+      "_id": 555559,
+      "docType": "nif",
+      "docNum": "77889900H",
+      "email": "leila@yahoo.com",
+      "customerId": "11115",
+      "givenName": "Isabella",
+      "familyName1": "Leila",
+      "phone": "667788990"
+    },
+    {
+      "_id": 555560,
+      "docType": "nif",
+      "docNum": "00112233I",
+      "email": "adrian@outlook.com",
+      "customerId": "11116",
+      "givenName": "Luis",
+      "familyName1": "Adrian",
+      "phone": "654321987"
+    },
+    {
+      "_id": 555561,
+      "docType": "nif",
+      "docNum": "33445566J",
+      "email": "julia@gmail.com",
+      "customerId": "11117",
+      "givenName": "Elena",
+      "familyName1": "Julia",
+      "phone": "688888888"
     }
   ],
   "products": [
@@ -29,7 +77,7 @@
       "productName": "FIBRA 1000MB",
       "mbSpeed": 1000,
       "gbData": null,
-      "productTypeName": "ftth",
+      "productTypeName": "FTTH",
       "numeracioTerminal": 933933933,
       "soldAt": "2019-01-09 14:26:17",
       "customerId": "11111"
@@ -45,24 +93,64 @@
       "customerId": "11111"
     },
     {
-      "_id": 1111113,
-      "productName": "FIBRA 1000MB",
-      "mbSpeed": 1000,
-      "gbData": 500,
-      "productTypeName": "4G",
-      "numeracioTerminal": 696696969,
-      "soldAt": "2021-08-01 18:30:27",
+      "_id": 1111120,
+      "productName": "FIBRA 500MB",
+      "mbSpeed": 500,
+      "gbData": null,
+      "productTypeName": "FTTH",
+      "numeracioTerminal": 111222333,
+      "soldAt": "2023-05-12 09:15:00",
       "customerId": "11112"
     },
     {
-      "_id": 1111114,
-      "productName": "MOBIL 500GB",
+      "_id": 1111121,
+      "productName": "MOBIL 1GB",
       "mbSpeed": null,
-      "gbData": 500,
+      "gbData": 1000,
       "productTypeName": "4G",
-      "numeracioTerminal": 696696969,
-      "soldAt": "2021-08-01 18:30:27",
-      "customerId": "11112"
+      "numeracioTerminal": 444555666,
+      "soldAt": "2023-07-20 11:30:00",
+      "customerId": "11113"
+    },
+    {
+      "_id": 1111122,
+      "productName": "FIBRA 2000MB",
+      "mbSpeed": 2000,
+      "gbData": null,
+      "productTypeName": "FTTH",
+      "numeracioTerminal": 777888999,
+      "soldAt": "2023-10-01 13:45:00",
+      "customerId": "11114"
+    },
+    {
+      "_id": 1111123,
+      "productName": "MOBIL 2GB",
+      "mbSpeed": null,
+      "gbData": 2000,
+      "productTypeName": "4G",
+      "numeracioTerminal": 222333444,
+      "soldAt": "2024-01-05 15:00:00",
+      "customerId": "11115"
+    },
+    {
+      "_id": 1111124,
+      "productName": "FIBRA 3000MB",
+      "mbSpeed": 3000,
+      "gbData": null,
+      "productTypeName": "FTTH",
+      "numeracioTerminal": 555666777,
+      "soldAt": "2024-03-20 16:20:00",
+      "customerId": "11116"
+    },
+    {
+      "_id": 1111125,
+      "productName": "MOBIL 5GB",
+      "mbSpeed": null,
+      "gbData": 5000,
+      "productTypeName": "4G",
+      "numeracioTerminal": 888999000,
+      "soldAt": "2024-05-10 18:00:00",
+      "customerId": "11117"
     }
   ]
 }
