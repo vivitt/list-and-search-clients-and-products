@@ -15,16 +15,16 @@ onMounted(async () => {
     <h1>Llistat dels clients</h1>
     <table>
       <tr>
-        <th>Client Id</th>
+        <th>Client ID</th>
         <th>Nom</th>
-        <th>Cognom</th>
-        <th>Email</th>
-        <th>Telefon</th>
-        <th>Document</th>
-        <th>Mes informacio</th>
+        <th>Cognom(s)</th>
+        <th>Correu electrònic</th>
+        <th>Telèfon</th>
+        <th>Identificació</th>
+        <th>Més informació</th>
       </tr>
       <tr v-for="customer in customerData">
-        <td>{{ customer.id }}</td>
+        <td>{{ customer.customerId }}</td>
         <td>{{ customer.givenName }}</td>
         <td>{{ customer.familyName1 }}</td>
         <td>{{ customer.email }}</td>
@@ -40,21 +40,4 @@ onMounted(async () => {
   </section>
 </template>
 
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+<style></style>

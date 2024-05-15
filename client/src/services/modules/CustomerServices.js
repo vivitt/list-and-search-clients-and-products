@@ -1,14 +1,19 @@
 import { makeRequest } from "../fetch/makeRequest.js";
 
+const requestOptions = {
+  mode: "cors",
+  headers: new Headers({ "Content-Type": "application/json" }),
+};
+
 /**
  * Get all customers
  */
 export const getAllCustomers = async () => {
   const jsonResponse = await makeRequest(
-    new Request(`https://prova-tecnica-parlem.vercel.app/customers/`, {
-      mode: "cors",
-      headers: new Headers({ "Content-Type": "application/json" }),
-    })
+    new Request(
+      `https://prova-tecnica-parlem.vercel.app/customers/`,
+      requestOptions
+    )
   );
   return jsonResponse;
 };
@@ -20,11 +25,9 @@ export const getAllCustomers = async () => {
 export const getSingleCustomer = async (clientId) => {
   const jsonResponse = await makeRequest(
     new Request(
-      `https://prova-tecnica-parlem.vercel.app/customers/${clientId}/`,
-      {
-        headers: new Headers({ "Content-Type": "application/json" }),
-      }
+      `https://prova-tecnica-parlem.vercel.app/customers/?customerId=${clientId}`,
+      requestOptions
     )
   );
-  return jsonResponse;
+  return jsonResponse[0];
 };

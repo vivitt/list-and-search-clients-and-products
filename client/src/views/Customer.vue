@@ -1,31 +1,29 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
 import { getClientProducts, getSingleCustomer } from "../services";
 
 const customer = ref({});
 
-const products = ref([])
-const route = useRoute();
-const id = route.params.id;
+const products = ref([]);
 
-defineProps({
+const props = defineProps({
   id: String,
 });
 
 onMounted(async () => {
-  customer.value = await getSingleCustomer(id);
-  products.value = await getClientProducts(id);
+  customer.value = await getSingleCustomer(props.id);
+  products.value = await getClientProducts(props.id);
 });
 </script>
 
 <template>
   <nav>
-    <RouterLink to="/">Torna a clients</RouterLink>
+    <RouterLink to="/">Torna al llistat de clients</RouterLink>
   </nav>
   <section>
     <h2>Dades del client</h2>
-    <table >
+    <table>
       <tr>
         <th>Nom</th>
         <td>
@@ -33,53 +31,47 @@ onMounted(async () => {
         </td>
       </tr>
       <tr>
-        <th>Identificacio</th>
+        <th>Identificació</th>
         <td>
-          <p>    <p>{{ customer.docType?.toUpperCase() }} {{ customer.docNum }}</p></p>
+          <p>{{ customer.docType?.toUpperCase() }} {{ customer.docNum }}</p>
         </td>
       </tr>
       <tr>
-        <th>Telefon</th>
+        <th>Telèfon</th>
         <td>
           <p>{{ customer.phone }}</p>
         </td>
       </tr>
       <tr>
-        <th>Correu electromic</th>
+        <th>Correu electrònic</th>
         <td>
           <p>{{ customer.email }}</p>
         </td>
       </tr>
     </table>
-
-
   </section>
   <section>
     <h2>Productes contractats</h2>
     <table>
       <tr>
-        <th>Nom</th>
+        <th>Nom del producte</th>
         <th>Velocitat</th>
-        <th>Cognom</th>
-        <th>Email</th>
-        <th>Telefon</th>
-        <th>Document</th>
-        <th>Mes informacio</th>
+        <th>GB data</th>
+        <th>Tipus de producte</th>
+        <th>Numeració Terminal</th>
+        <th>Data de venda</th>
       </tr>
-    <tr v-for="product in products">
+      <tr v-for="product in products">
         <td>{{ product.productName }}</td>
         <td>{{ product.mbSpeed }}</td>
-        <!-- <td>{{ product.familyName1 }}</td>
-        <td>{{ product.email }}</td>
-        <td>{{ product.phone }}</td>
-        <td>{{ product.docType?.toUpperCase() }} {{ customer.docNum }}</td> -->
+        <td>{{ product.gbData }}</td>
+        <td>{{ product.productTypeName }}</td>
+        <td>{{ product.numeracioTerminal }}</td>
         <td>
-          <RouterLink :to="`/customer/${customer.id}`"
-            >Veure productes contractats</RouterLink
-          >
+          {{ product.soldAt }}
         </td>
       </tr>
-      </table>
+    </table>
   </section>
 </template>
 
