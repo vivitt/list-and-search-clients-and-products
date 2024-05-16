@@ -1,27 +1,31 @@
-# Prova technical parlem
+# PROVA TÈCNICA PARLEM - FRONT-END VUE.JS
 
-This repo is a solution for technical test that involves creating a fake API with a record of clients and products and a client app that display the API data in two views and allow some filter and order operations.
+This repo is a solution for this frontend technical test and involves creating a mock API with records of clients and products, and a client app that displays the API data in two views and allows for filtering and ordering operations.
 
-Visit the project at:
+🔗 [View live project](https://prova-tecnica-parlem-black.vercel.app/)
 
 ---
 
 ### Contents
 
 - [Project details](#project-details)
-- [Usage: Current features](#features)
-- [Quick start: How to set up this project](#set-up)
-- [Improvements: Next features](#improvements)
+- [Usage and features](#usage-and-features)
+- [Project set up](#project-set-up)
+- [Further improvements](#further-improvements)
 
 ---
 
 ## Project details
 
-This project involves a
+This project consist in a mock API created with [json-server](https://github.com/typicode/json-server) and [deployed to Vercel](https://prova-tecnica-parlem.vercel.app/) using Serverless Functions. The mocked data is stored in [db.json](./api/db.json)
 
-## Usage: Current features
+The client is a Vite+Vue app. It uses Vue Router to generate dynamic routes. Functionality was prioritized over visual appearance during the development of this project, so very basic styles are included using plain CSS.
 
-The Json-server API provides three routes to get the data displayed by the client.
+## Usage and features
+
+### API
+
+This project consumes three routes from the Json-server API to retrieve all customers data, a single customer by the ID and all the products for a client.
 
 - /customers
 
@@ -29,26 +33,34 @@ The Json-server API provides three routes to get the data displayed by the clien
 
 - /products/:id
 
-The API is deployed to vercel in this link
+### CLIENT
 
-The client is a Vite+Vue app. It includes two views:
+The client app includes two views:
 
-- A list of all customers
-- Single customer with details and contracted products
+- Home view, which includes a list of all existing customers
+<div align='center'>
+<img src='./client/public/Screenshot 2024-05-16 at 01.31.02.png' alt='Home view screenshot' width='600'/>
+</div>
 
-### Filter customers
-
-The home view allows users to filter customers using a text input to display only the ones with matching values in their names, lastnames, phone number, IDs or emails.
-
-Users can filter items using the input at the top.
-<br/>
+- Customer view, which includes customer details and a list of all the contracted products for a client
 
 <div align='center'>
-<img src='./public/img/items-filter.png' alt='List view, filter input contains the text "ch" and only matching items are shown' width='600'/>
+<img src='./client/public/Screenshot 2024-05-16 at 01.31.14.png' alt='Home view screenshot' width='600'/>
 </div>
- and also order the customers by name, lastName or ID.
 
-## Quick start: How to set up this project
+#### Filter customers
+
+Users can filter customers using a text input in the Home view and see in the UI only the ones with matching values in their names, last names, phone number, IDs or emails.
+
+<div align='center'>
+<img src='./client/public/Screenshot 2024-05-16 at 01.31.28.png' alt='Home view screenshot' width='600'/>
+</div>
+
+#### Order customers
+
+Customer data can be also order by some properties such as name, last name or ID.
+
+## Project set up
 
 To set up this project locally:
 
@@ -60,19 +72,10 @@ To set up this project locally:
 - `npm install` to install client dependencies
 - `npm run dev` to start the client server in port 5173
 
-### Mark items as purchased
+## Further Improvements
 
-Once in the List view, users can interact with the items in the list. Each time a user buy the item, them mark it as purchased in the list. Over time, the app comes to understand the intervals at which users buy different items, and if an item is likely to be due to be bought soon, it rises to the top of the shopping list.
-<br/>
+Styles are kept minimalistic in this project, the use of html tables is something that can be revisited to achieve a nicer look.
 
-<div align='center'>
-<img src='./public/img/items.png' alt='List view, filter input is empty and all list items are shown' width='600'/>
-</div>
+There are some helper methods in the Home view that could also be extracted to a new file to keep the view cleaner and avoid having so much logic in it.
 
-<div align='center'>
-<img src='./public/img/manage-list.png' alt='Manage List view, displaying a first form to add items and a second one to share the list.' width='600'/>
-</div>
-
-## Improvements: Next features
-
-Contributions to this project are appreciated. If you find any issues or have suggestions for improvements, please feel free to submit a pull request or open an issue.
+If the project is meant to grow and include more data, it might be a good idea to include a Pinia store to handle the data.
