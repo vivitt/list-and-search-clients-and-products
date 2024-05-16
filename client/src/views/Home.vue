@@ -128,9 +128,3 @@ watch(filterQuery, () => {
     </table>
   </section>
 </template>
-
-<style>
-th > div {
-  display: flex;
-}
-</style>

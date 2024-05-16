@@ -79,6 +79,9 @@ th {
   text-align: left;
   padding: 8px;
 }
+th > div {
+  display: flex;
+}
 
 tr:nth-child(even) {
   background-color: #dddddd;
