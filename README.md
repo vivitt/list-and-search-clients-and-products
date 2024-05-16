@@ -37,18 +37,15 @@ This project consumes three routes from the Json-server API to retrieve all cust
 
 The client app includes two views:
 
-- Home view, which includes a list of all existing customers
+#### Home view
+Renders a list of all existing customers with their data.
 <div align='center'>
 <img src='./client/public/Screenshot 2024-05-16 at 01.31.02.png' alt='Home view screenshot' width='600'/>
 </div>
 
-- Customer view, which includes customer details and a list of all the contracted products for a client
 
-<div align='center'>
-<img src='./client/public/Screenshot 2024-05-16 at 01.31.14.png' alt='Home view screenshot' width='600'/>
-</div>
 
-#### Filter customers
+##### Filter customers
 
 Users can filter customers using a text input in the Home view and see in the UI only the ones with matching values in their names, last names, phone number, IDs or emails.
 
@@ -56,13 +53,22 @@ Users can filter customers using a text input in the Home view and see in the UI
 <img src='./client/public/Screenshot 2024-05-16 at 01.31.28.png' alt='Home view screenshot' width='600'/>
 </div>
 
-#### Order customers
+##### Order customers
 
 Customer data can also be ordered ascending or descending by properties such as name, last name, or ID.
 
 <div align='center'>
 <img src='./client/public/Screenshot 2024-05-16 at 03.19.56.png' alt='Home view screenshot' width='600'/>
 </div>
+
+### Customer view
+Renders customer's details and a list of all their contracted products.
+<div align='center'>
+<img src='./client/public/Screenshot 2024-05-16 at 01.31.14.png' alt='Home view screenshot' width='600'/>
+</div>
+
+
+
 
 ## Project set up
 
