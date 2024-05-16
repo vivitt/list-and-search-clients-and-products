@@ -2,18 +2,35 @@
 import { onMounted, ref } from "vue";
 import { RouterLink } from "vue-router";
 import { getClientProducts, getSingleCustomer } from "../services";
-
-const customer = ref({});
-
-const products = ref([]);
+import Spinner from "../components/Spinner.vue";
+import ErrorMessage from "../components/ErrorMessage.vue";
 
 const props = defineProps({
   id: String,
 });
+const customer = ref({});
+
+const products = ref([]);
+
+const loading = ref(false);
+const error = ref(null);
+
+async function fetchData(id) {
+  error.value = null;
+  loading.value = true;
+
+  try {
+    customer.value = await getSingleCustomer(id);
+    products.value = await getClientProducts(id);
+  } catch (err) {
+    error.value = `❌ S'ha produït un error: ${err.toString()}`;
+  } finally {
+    loading.value = false;
+  }
+}
 
 onMounted(async () => {
-  customer.value = await getSingleCustomer(props.id);
-  products.value = await getClientProducts(props.id);
+  fetchData(props.id);
 });
 </script>
 
@@ -22,9 +39,14 @@ onMounted(async () => {
     <RouterLink to="/">Torna al llistat de clients</RouterLink>
   </nav>
   <section>
+    <ErrorMessage v-if="error !== null" :message="error"></ErrorMessage>
+
     <h2>Dades del client</h2>
     <table>
-      <tr>
+      <tr v-if="loading">
+        <Spinner></Spinner>
+      </tr>
+      <tr v-else>
         <th>Nom</th>
         <td>
           <p>{{ customer.givenName }} {{ customer.familyName1 }}</p>
@@ -53,7 +75,10 @@ onMounted(async () => {
   <section>
     <h2>Productes contractats</h2>
     <table>
-      <tr>
+      <tr v-if="loading">
+        <Spinner></Spinner>
+      </tr>
+      <tr v-else>
         <th>Nom del producte</th>
         <th>Velocitat</th>
         <th>GB data</th>

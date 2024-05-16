@@ -4,8 +4,12 @@ import { getAllCustomers } from "../services";
 import { RouterLink } from "vue-router";
 import OrderButton from "../components/OrderButton.vue";
 import CustomerFilter from "../components/CustomerFilter.vue";
+import Spinner from "../components/Spinner.vue";
+import ErrorMessage from "../components/ErrorMessage.vue";
 
 const customerData = ref([]);
+const loading = ref(false);
+const error = ref(null);
 
 const filteredCustomers = ref(customerData.value);
 
@@ -16,9 +20,22 @@ const orderDirections = {
   down: "descending",
 };
 
-onMounted(async () => {
-  customerData.value = await getAllCustomers();
-  filteredCustomers.value = customerData.value;
+async function fetchData() {
+  error.value = null;
+  loading.value = true;
+
+  try {
+    customerData.value = await getAllCustomers();
+    filteredCustomers.value = customerData.value;
+  } catch (err) {
+    error.value = `❌ S'ha produït un error: ${err.toString()}`;
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  fetchData();
 });
 
 const sortAscending = (value, property) => {
@@ -79,7 +96,11 @@ watch(filterQuery, () => {
     ></CustomerFilter>
 
     <table>
-      <tr>
+      <tr v-if="loading">
+        <Spinner></Spinner>
+      </tr>
+
+      <tr v-else>
         <th>
           <div>
             Client ID
@@ -112,6 +133,9 @@ watch(filterQuery, () => {
         <th>Identificació</th>
         <th>Més informació</th>
       </tr>
+
+      <ErrorMessage v-if="error !== null" :message="error"></ErrorMessage>
+
       <tr v-for="customer in filteredCustomers">
         <td>{{ customer.customerId }}</td>
         <td>{{ customer.givenName }}</td>
