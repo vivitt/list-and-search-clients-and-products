@@ -5,43 +5,50 @@ import { RouterLink } from "vue-router";
 import OrderButton from "../components/OrderButton.vue";
 import CustomerFilter from "../components/CustomerFilter.vue";
 
-const orderCustomers = {
-  ascending: 1,
-  descending: -1,
-};
-
-const orderAscending = ref(true);
-
 const customerData = ref([]);
+
 const filteredCustomers = ref(customerData.value);
 
 const filterQuery = ref("");
+
+const orderDirections = {
+  up: "ascending",
+  down: "descending",
+};
 
 onMounted(async () => {
   customerData.value = await getAllCustomers();
   filteredCustomers.value = customerData.value;
 });
 
-const sortByProperty = (value, property) => {
+const sortAscending = (value, property) => {
   filteredCustomers.value.sort((a, b) => {
-    const propertyA = a[property];
-    const propertyB = b[property];
-
-    console.log(propertyA);
-    if (value.ascending) {
-      if (propertyA > propertyB) {
-        return value.ascending;
-      } else {
-        return value.descending;
-      }
-    } else {
-      if (propertyA > propertyB) {
-        return value.descending;
-      } else {
-        return value.ascending;
-      }
+    if (a[property] > b[property]) {
+      return 1;
     }
+    if (b[property] > a[property]) {
+      return -1;
+    }
+    return 0;
   });
+};
+
+const sortDescending = (value, property) => {
+  filteredCustomers.value.sort((a, b) => {
+    if (a[property] > b[property]) {
+      return -1;
+    }
+    if (b[property] > a[property]) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
+const sortByProperty = (value, property) => {
+  value === orderDirections.up
+    ? sortAscending(value, property)
+    : sortDescending(value, property);
 };
 
 const filterCustomers = () => {
@@ -74,25 +81,31 @@ watch(filterQuery, () => {
     <table>
       <tr>
         <th>
-          Client ID
-          <OrderButton
-            @order="sortByProperty"
-            orderByProperty="customerId"
-          ></OrderButton>
+          <div>
+            Client ID
+            <OrderButton
+              @order="sortByProperty"
+              orderByProperty="customerId"
+            ></OrderButton>
+          </div>
         </th>
         <th>
-          Nom
-          <OrderButton
-            @order="sortByProperty"
-            orderByProperty="givenName"
-          ></OrderButton>
+          <div>
+            Nom
+            <OrderButton
+              @order="sortByProperty"
+              orderByProperty="givenName"
+            ></OrderButton>
+          </div>
         </th>
         <th>
-          Cognom(s)
-          <OrderButton
-            @order="sortByProperty"
-            orderByProperty="familyName"
-          ></OrderButton>
+          <div>
+            Cognom(s)
+            <OrderButton
+              @order="sortByProperty"
+              orderByProperty="familyName"
+            ></OrderButton>
+          </div>
         </th>
         <th>Correu electrònic</th>
         <th>Telèfon</th>
@@ -116,4 +129,8 @@ watch(filterQuery, () => {
   </section>
 </template>
 
-<style></style>
+<style>
+th > div {
+  display: flex;
+}
+</style>
