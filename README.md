@@ -78,8 +78,8 @@ To set up this project locally:
 
 ## Further Improvements
 
-Styles are kept minimalistic in this project, the use of html tables is something that can be revisited to achieve a nicer look.
+Currently, the Home and Customer views are responsible for fetching the data. This causes some coupling that might be avoided if the project were to grow. Adding a [Pinia](https://pinia.vuejs.org/) store could be an option in this scenario. There are some helper methods, especially in the Home view, that could also be extracted to a new file.
 
-There are some helper methods in the Home view that could also be extracted to a new file to keep the view cleaner and avoid having so much logic in it.
+The ordering function needs fixing because it can return a buggy order in some cases. Adding a unit testing framework such as [Vitest](https://vitest.dev/) would help to catch those and other types of bugs, and if I were to continue working on this project, I would definitely add it.
 
-If the project is meant to grow and include more data, it might be a good idea to include a Pinia store to handle the data.
+Finally, styles are kept minimalistic in this project, but the use of HTML tables is something that can be revisited to achieve a nicer look.
