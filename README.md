@@ -58,7 +58,7 @@ Users can filter customers using a text input in the Home view and see in the UI
 
 #### Order customers
 
-Customer data can be also order by some properties such as name, last name or ID.
+Customer data can also be ordered ascending or descending by properties such as name, last name, or ID.
 
 <div align='center'>
 <img src='./client/public/Screenshot 2024-05-16 at 03.19.56.png' alt='Home view screenshot' width='600'/>
