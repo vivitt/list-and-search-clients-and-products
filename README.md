@@ -37,7 +37,7 @@ This project consumes three routes from the Json-server API to retrieve all cust
 
 The client app includes two views:
 
-#### Home view
+### Home view
 Renders a list of all existing customers with their data.
 <div align='center'>
 <img src='./client/public/Screenshot 2024-05-16 at 01.31.02.png' alt='Home view screenshot' width='600'/>
