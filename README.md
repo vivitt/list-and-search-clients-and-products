@@ -1,6 +1,11 @@
-# PROVA TÈCNICA PARLEM - FRONT-END VUE.JS
+# LIST AND FILTER Clients and Products
 
-This repo is a solution for this frontend technical test and involves creating a mock API with records of clients and products, and a client app that displays the API data in two views and allows for filtering and ordering operations.
+This repo is a solution for a frontend technical test and involves creating a mock API with records of clients and products, and a client app that displays the API data in two views and allows for filtering and ordering operations.
+
+This is a web app that display a list of clients and their contracted products, and allow users to filter and re order them. You can use this project as a starting point to create your own JsonServer project.
+
+
+
 
 🔗 [View live project](https://prova-tecnica-parlem-black.vercel.app/)
 
